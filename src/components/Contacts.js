@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import {
   getAllContacts,
   getSingleContact,
@@ -14,10 +14,11 @@ function Contacts({
   contact,
   deleteContact,
 }) {
+const globalState = useSelector(globalState => globalState);
+const dispatch = useDispatch();
 
-  
   useEffect(() => {
-    getAllContactsData();
+    getAllContactsData();  // api call  to get all contacts
   });
 
   const getAllContactsData = () => {
@@ -30,7 +31,7 @@ function Contacts({
     }
   };
   return (
-    <div>
+    <React.Fragment>
       <div className="container d-flex flex-row justify-content-between mt-4">
         <h1>All Contacts</h1>
         <button
@@ -99,13 +100,13 @@ function Contacts({
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (globalState) => {
   return {
-    contacts: state.contacts,
-    contact: state.contact,
+    contacts: globalState.contacts,
+    contact: globalState.contact,
   };
 };
 const mapDispatchToProps = (dispatch) => {

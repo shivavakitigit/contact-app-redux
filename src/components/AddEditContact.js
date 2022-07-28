@@ -15,6 +15,7 @@ function AddEditContact({addContact, editContactData, editContact}) {
     [ editContactData ],
   );
   const handleChange = (name, value) => {
+    debugger;
     const oldContact = {...contact};
     oldContact[name] = value;
     setContact(oldContact);

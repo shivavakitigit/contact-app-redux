@@ -1,5 +1,7 @@
 import {compose, createStore} from 'redux';
 import {contactsReducer} from './reducers/contacts';
+import { LoginReducer } from './reducers/LoginReducer';
+
 
 // export const store = createStore(contactsReducer);
 const enhancers = compose(
@@ -7,7 +9,8 @@ const enhancers = compose(
     );
 // multipleCombineReducers is a function that takes an object of reducers and returns a single reducer
 export const store = createStore(
-    contactsReducer,
+    // contactsReducer,
+    LoginReducer,
     enhancers
   );
 
